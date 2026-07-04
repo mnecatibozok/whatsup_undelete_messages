@@ -11,12 +11,10 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// Not: proje-seviyesi "allprojects { repositories {...} } " bloğu kasıtlı olarak
+// kaldırıldı — settings.gradle içindeki dependencyResolutionManagement bloğu
+// (RepositoriesMode.FAIL_ON_PROJECT_REPOS) repository yönetimini merkezi
+// olarak üstleniyor; ikisi birlikte kullanılınca Gradle build'i reddediyor.
 
 task clean(type: Delete) {
     delete rootProject.buildDir
