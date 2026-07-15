@@ -1,0 +1,21 @@
+buildscript {
+    ext.kotlin_version = "1.9.24"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.4.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+// Not: proje-seviyesi "allprojects { repositories {...} } " bloğu kasıtlı olarak
+// kaldırıldı — settings.gradle içindeki dependencyResolutionManagement bloğu
+// (RepositoriesMode.FAIL_ON_PROJECT_REPOS) repository yönetimini merkezi
+// olarak üstleniyor; ikisi birlikte kullanılınca Gradle build'i reddediyor.
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
